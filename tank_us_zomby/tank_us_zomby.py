@@ -51,7 +51,7 @@ def shoot_bullet():
 
 
 def create_zombies():
-    if len(zomby_list) < 5:
+    if len(zomby_list) < 2:
         loc_rand = random.randint(0, 3)
         z = Actor("zombie_stand.png")
         if loc_rand == 0:
@@ -113,16 +113,16 @@ def start_game():
 
 def update():
     global bullet_fired
-    if keyboard.left:
+    if keyboard.left and blue_tank.x > 0:
         blue_tank.x -= 5
         blue_tank.angle = LEFT
-    elif keyboard.right:
+    elif keyboard.right and blue_tank.x < WIDTH:
         blue_tank.x += 5
         blue_tank.angle = RIGHT
-    if keyboard.up:
+    if keyboard.up and blue_tank.y > 0:
         blue_tank.y -= 5
         blue_tank.angle = UP
-    elif keyboard.down:
+    elif keyboard.down and blue_tank.y < HEIGHT:
         blue_tank.y += 5
         blue_tank.angle = DOWN
     if keyboard.space:
